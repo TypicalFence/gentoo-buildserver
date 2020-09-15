@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# copy the world file of the the profile
+cp "/root/repo/profiles/$1/world" /var/lib/portage/world
+
+emerge -uDN @world --buildpkg

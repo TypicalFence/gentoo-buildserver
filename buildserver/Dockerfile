@@ -5,9 +5,8 @@ FROM gentoo/stage3
 RUN emerge-webrsync
 RUN emerge dev-vcs/git
 COPY buildserver/repos.conf /etc/portage/repos.conf
-
-# copy repositry root to the repo folder
-COPY . /var/db/repos/gentoo-buildserver 
-RUN ./var/db/repos/gentoo-buildserver/buildserver/sync_custom_repos.sh
+RUN mkdir /root/repo
+COPY buildserver/ /root
+WORKDIR /root
 
 CMD ["/bin/bash"]
