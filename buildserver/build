@@ -1,3 +1,4 @@
 #!/bin/bash
 
+eselect profile set buildserver:"$1"
 emerge -uDN @world --buildpkg

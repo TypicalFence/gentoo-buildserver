@@ -32,7 +32,7 @@ def run_job(name, profile):
         "buildserver",
         "/root/{0} {1}".format(name, profile),
         volumes=get_voulmes(profile),
-        name="{0}-{1}-{2}".format(profile, name, moment),
+        name="{0}-{1}-{2}".format(profile.replace("/", "_"), name, moment),
         # labels={"domain": "gentoo-build",
         #         "started": moment, "profile": profile, "job": name},
         detach=True,
@@ -47,7 +47,7 @@ def run_plain_container(profile):
         "buildserver",
         "/bin/bash",
         volumes=get_voulmes(profile),
-        name="{0}-{1}".format(profile, moment),
+        name="{0}-{1}".format(profile.replace("/", "_"), moment),
         # labels={"domain": "gentoo-build",
         #         "started": moment, "profile": profile, "job": "shell"},
 
