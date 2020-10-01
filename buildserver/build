@@ -1,4 +1,5 @@
 #!/bin/bash
 
-eselect profile set buildserver:"$1"
-emerge -uDN @world --buildpkg
+profile=$(echo "buildserver:$1")
+eselect profile set $profile
+emerge -DN --buildpkg --usepkg @world
