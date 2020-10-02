@@ -7,6 +7,7 @@ import docker
 SCRIPT_DIR = os.path.dirname(os.path.realpath(__file__))
 docker_client = docker.from_env()
 
+capabilities = ["SYS_PTRACE"]
 
 def ensure_profile_paths(profile):
     base = "{0}/.build_data/{1}".format(SCRIPT_DIR, profile)
@@ -33,6 +34,7 @@ def run_job(name, profile):
         "/root/{0} {1}".format(name, profile),
         volumes=get_voulmes(profile),
         name="{0}-{1}-{2}".format(profile.replace("/", "_"), name, moment),
+        cap_add=capabilities,
         # labels={"domain": "gentoo-build",
         #         "started": moment, "profile": profile, "job": name},
         detach=True,
@@ -48,6 +50,7 @@ def run_plain_container(profile):
         "/bin/bash",
         volumes=get_voulmes(profile),
         name="{0}-{1}".format(profile.replace("/", "_"), moment),
+        cap_add=capabilities,
         # labels={"domain": "gentoo-build",
         #         "started": moment, "profile": profile, "job": "shell"},
 
