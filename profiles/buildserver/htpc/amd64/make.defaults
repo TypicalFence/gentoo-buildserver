@@ -1,1 +1,1 @@
-USE="-python2"
+USE="-python_targets_python2_7"
