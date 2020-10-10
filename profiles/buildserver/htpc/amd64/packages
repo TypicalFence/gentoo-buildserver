@@ -15,3 +15,6 @@
 *sys-kernel/dracut
 *sys-kernel/gentoo-sources
 *sys-kernel/linux-firmware
+*x11-base/xorg-x11
+*x11-terms/xterm
+*x11-wm/i3
