@@ -1,1 +1,3 @@
 sys-kernel/linux-firmware linux-fw-redistributable no-source-code
+media-fonts/font-bh-ttf
+media-fonts/font-bh-type1
