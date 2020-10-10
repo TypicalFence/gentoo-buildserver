@@ -3,6 +3,8 @@
 profile=$(echo "buildserver:$1")
 eselect profile set $profile
 
+cp /var/db/repos/buildserver/profiles/$1/package.license /etc/portage/package.license/profile.license
+
 # https://bugs.gentoo.org/680456
 export FEATURES="-ipc-sandbox -mount-sandbox -network-sandbox -pid-sandbox"
 emerge -eDN --buildpkg --usepkg @world
