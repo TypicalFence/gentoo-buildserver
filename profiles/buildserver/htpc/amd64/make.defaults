@@ -1,2 +1,2 @@
 INPUT_DEVICES="libinput"
-USE=""
+USE="elogind"
