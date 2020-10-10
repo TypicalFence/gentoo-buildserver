@@ -3,6 +3,7 @@
 profile=$(echo "buildserver:$1")
 eselect profile set $profile
 
+mkdir -p /etc/portage/package.license
 cp /var/db/repos/buildserver/profiles/$1/package.license /etc/portage/package.license/profile.license
 
 # https://bugs.gentoo.org/680456
