@@ -10,7 +10,6 @@ dev-vcs/git
 net-misc/dhcpcd
 net-misc/netifrc
 sys-apps/pciutils
-sys-boot/grub:2
 sys-fs/btrfs-progs
 sys-fs/dosfstools
 sys-kernel/dracut
