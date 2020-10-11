@@ -22,4 +22,5 @@ USE="initramfs
      twolame
      cdio
      sqlite
-     libmpv"
+     libmpv
+     icu"
