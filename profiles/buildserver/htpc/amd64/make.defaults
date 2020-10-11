@@ -1,2 +1,2 @@
 INPUT_DEVICES="libinput"
-USE="elogind X sqlite"
+USE="initramfs dns elogind X sqlite"
