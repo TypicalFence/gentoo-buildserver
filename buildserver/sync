@@ -20,7 +20,12 @@ handle_timestamps() {
     fi
 }
 
+# https://bugs.gentoo.org/680456
 export FEATURES="-ipc-sandbox -mount-sandbox -network-sandbox -pid-sandbox"
+
+# set profiles
+profile=$(echo "buildserver:$1")
+eselect profile set $profile
 
 remember_repo_version "buildserver"
 remember_repo_version "fence"

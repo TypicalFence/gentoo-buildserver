@@ -1,4 +1,5 @@
 #!/bin/bash
+
 # https://bugs.gentoo.org/680456
 export FEATURES="-ipc-sandbox -mount-sandbox -network-sandbox -pid-sandbox"
 
