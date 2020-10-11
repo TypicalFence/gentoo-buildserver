@@ -27,6 +27,14 @@ def get_voulmes(profile):
     }
 
 
+def is_running(container_id):
+    container = docker_client.containers.get(container_id)
+    container_state = container.attrs['State']
+    container_is_running = container_state['Running']
+
+    return container_is_running
+
+
 def run_job(name, profile):
     moment = int(time.time())
     container = docker_client.containers.run(
@@ -40,24 +48,25 @@ def run_job(name, profile):
         detach=True,
         tty=True
     )
-    print(container.id)
+    return container.id
 
 
 def run_plain_container(profile):
     moment = int(time.time())
     container = docker_client.containers.run(
         "buildserver",
-        "/bin/bash",
+        "/root/shell {0}".format(profile),
         volumes=get_voulmes(profile),
         name="{0}-{1}".format(profile.replace("/", "_"), moment),
         cap_add=capabilities,
         # labels={"domain": "gentoo-build",
         #         "started": moment, "profile": profile, "job": "shell"},
-
+        
         detach=True,
-        tty=True
+        tty=True,
+        stdin_open=True,
     )
-    print(container.id)
+    return container.id
 
 
 @click.group()
@@ -67,24 +76,52 @@ def cli():
 
 @cli.command()
 @click.argument("profile")
-def sync(profile):
+@click.option('--logs', is_flag=True)
+def sync(profile, logs):
     ensure_profile_paths(profile)
-    run_job("sync", profile)
+    id = run_job("sync", profile)
+    
+    if logs:
+        os.system("docker logs -f " + id)
+ 
+        # stop container if the user CTR-C'd the logs
+        if is_running(id):
+            print("Stopping the Container!")
+            print("might take a moment")
+            docker_client.containers.get(id).stop()
+
+    print(id)
 
 
 @cli.command()
 @click.argument("profile")
-def build(profile):
+@click.option('--logs', is_flag=True)
+def build(profile, logs):
     ensure_profile_paths(profile)
-    run_job("build", profile)
+    id = run_job("build", profile)
+
+    if logs:
+        os.system("docker logs -f " + id)
+    
+        # stop container if the user CTR-C'd the logs
+        if is_running(id):
+            print("Stopping the Container!")
+            print("might take a moment")
+            docker_client.containers.get(id).stop()
+
+    print(id)
 
 
 @cli.command()
 @click.argument("profile")
 def shell(profile):
     ensure_profile_paths(profile)
-    run_plain_container(profile)
+    id = run_plain_container(profile)
 
+    os.system("docker attach " + id)
+    container = docker_client.containers.get(id)
+    container.stop()
+    container.remove()
 
 if __name__ == '__main__':
     cli()
