@@ -1,3 +1,34 @@
 #!/bin/bash
 
+get_git_commit() {
+    ( cd /var/db/repos/$1 && git rev-parse HEAD )
+}
+
+remember_repo_version() {
+    local commit=$(get_git_commit $1)
+    eval "$1_repo_version=$commit"
+}
+
+handle_timestamps() {
+    local old_commit=$(echo "$1_repo_version")
+    local new_commit=$(get_git_commit $1)
+
+
+    if [ "$old_commit" != "$new_commit" ]; then
+        echo "updating timestamp for $1"
+        egencache --update --rsync --write-timestamp --repo $1
+    fi
+}
+
+export FEATURES="-ipc-sandbox -mount-sandbox -network-sandbox -pid-sandbox"
+
+remember_repo_version "buildserver"
+remember_repo_version "fence"
+remember_repo_version "dlang"
+
 emerge --sync
+
+handle_timestamps "buildserver"
+handle_timestamps "fence"
+handle_timestamps "dlang"
+
