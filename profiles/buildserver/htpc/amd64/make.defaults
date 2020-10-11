@@ -1,2 +1,25 @@
 INPUT_DEVICES="libinput"
-USE="initramfs dns elogind X sqlite"
+USE="initramfs
+     dns
+     elogind
+     cli
+     X
+     -systemd
+     pulseaudio
+     expat
+     flac
+     lame
+     mpg123
+     libmpdclient
+     libsamplerate
+     modplug
+     opus
+     nfs
+     vorbis
+     wavpack
+     zeroconf
+     zip
+     twolame
+     cdio
+     sqlite
+     libmpv"
