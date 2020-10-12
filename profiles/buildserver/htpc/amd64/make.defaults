@@ -24,4 +24,5 @@ USE="initramfs
      sqlite
      libmpv
      cec
+     openssl
      icu"
