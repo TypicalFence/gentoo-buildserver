@@ -15,11 +15,13 @@
 *sys-kernel/dracut
 *sys-kernel/gentoo-sources
 *sys-kernel/linux-firmware
+*net-fs/nfs-utils
 *x11-base/xorg-x11
-*x11-terms/xterm
+*x11-terms/alacritty
 *x11-wm/i3
 *net-dns/avahi
 *media-video/mpv
 *media-sound/mpd
 *media-sound/mpc
 *media-sound/ncmpcpp
+*media-tv/kodi

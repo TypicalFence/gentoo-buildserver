@@ -23,4 +23,5 @@ USE="initramfs
      cdio
      sqlite
      libmpv
+     cec
      icu"
