@@ -25,4 +25,5 @@ USE="initramfs
      libmpv
      cec
      openssl
+     webserver
      icu"
