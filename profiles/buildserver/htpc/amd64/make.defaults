@@ -6,6 +6,7 @@ USE="initramfs
      X
      -systemd
      pulseaudio
+     system-wide
      expat
      flac
      lame
