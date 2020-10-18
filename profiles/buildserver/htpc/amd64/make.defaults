@@ -25,6 +25,9 @@ USE="initramfs
      sqlite
      libmpv
      cec
+     kernel-cec
+     tools
+     udev 
      openssl
      webserver
      mdnsresponder-compat
