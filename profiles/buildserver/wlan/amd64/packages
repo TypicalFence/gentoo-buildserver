@@ -1,0 +1,16 @@
+*sys-kernel/gentoo-sources
+*sys-kernel/linux-firmware
+*sys-process/htop
+*app-text/tree
+*app-admin/syslog-ng
+*app-editors/vim
+*app-misc/tmux
+*app-portage/eix
+*app-portage/gentoolkit
+*dev-vcs/git
+*net-misc/dhcpcd
+*net-misc/netifrc
+*sys-apps/pciutils
+*sys-fs/btrfs-progs
+*sys-kernel/dracut
+*net-misc/ntp

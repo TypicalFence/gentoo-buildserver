@@ -1,0 +1,2 @@
+GRUB_PLATFORMS="coreboot"
+CPU_FLAGS_X86="mmx mmxext popcnt sse sse2 sse3 sse4a ssse3"

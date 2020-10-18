@@ -1,0 +1,6 @@
+*net-wireless/hostap-utils
+*net-wireless/hostapd
+*net-wireless/wpa_supplicant
+*net-wireless/iwd
+*net-misc/bridge-utils
+*net-firewall/iptables
