@@ -1,2 +1,4 @@
 amd64 buildserver/htpc/amd64 dev 
-amd64 buildserver/htpc/amd64/nuc/iris dev 
+amd64 buildserver/htpc/amd64/nuc/iris dev
+amd64 buildserver/wlan/amd64 dev
+amd64 buildserver/wlan/amd64/apu dev
