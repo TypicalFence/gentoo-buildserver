@@ -23,15 +23,19 @@ handle_timestamps() {
 # https://bugs.gentoo.org/680456
 export FEATURES="-ipc-sandbox -mount-sandbox -network-sandbox -pid-sandbox"
 
-# set profiles
-profile=$(echo "buildserver:$1")
-eselect profile set $profile
+# make sure our custom overrides file exists
+# everything breaks if make.conf can't source something
+touch /etc/portage/make.profile/make.overrides
 
 remember_repo_version "buildserver"
 remember_repo_version "fence"
 remember_repo_version "dlang"
 
 emerge --sync
+
+# again make sure the custom overrides file exists
+# it may disappear after the sync for reasons I don't care about to investigate
+touch /etc/portage/make.profile/make.overrides
 
 handle_timestamps "buildserver"
 handle_timestamps "fence"
